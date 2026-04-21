@@ -1,14 +1,19 @@
 package ejercicios;
 
 public class Recursividad12 {
-    
-    public static int sumaMatriz(int[][] mat, int i, int j) {
-        if (i == mat.length){
+
+    public int sumaMatriz(int[][] matriz, int i, int j) {
+        // Caso base: si se pasa de las filas
+        if (i >= matriz.length) {
             return 0;
-        } 
-            if (j == mat[0].length){
-                return sumaMatriz(mat, i + 1, 0);
-            } 
-             return mat[i][j] + sumaMatriz(mat, i, j + 1);
+        }
+
+        // Si se pasa de columnas, pasa a la siguiente fila
+        if (j >= matriz[0].length) {
+            return sumaMatriz(matriz, i + 1, 0);
+        }
+
+        // Suma el elemento actual + siguiente
+        return matriz[i][j] + sumaMatriz(matriz, i, j + 1);
     }
 }
